@@ -1,25 +1,147 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-  <meta charset="UTF-8">
-  <title>iaTech | Login</title>
-  <link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>iaTech</title>
+  <meta name="description" content="iaTech — soluções em Inteligência Artificial e análise de dados." />
+  <style>
+    :root{
+      --bg:#0b0f14; --card:#111827; --muted:#9ca3af; --text:#e5e7eb; --brand:#22d3ee; --accent:#a78bfa;
+    }
+    *{box-sizing:border-box}
+    body{margin:0;font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,Arial;background:linear-gradient(180deg,#0b0f14,#020617);color:var(--text)}
+    header{position:sticky;top:0;background:rgba(2,6,23,.7);backdrop-filter:blur(10px);border-bottom:1px solid #111827}
+    .wrap{max-width:1100px;margin:auto;padding:16px}
+    nav{display:flex;align-items:center;justify-content:space-between}
+    .logo{font-weight:800;letter-spacing:.5px}
+    .logo span{color:var(--brand)}
+    .cta{background:linear-gradient(90deg,var(--brand),var(--accent));border:none;color:#020617;padding:10px 14px;border-radius:10px;font-weight:700;cursor:pointer}
+    .hero{padding:72px 16px}
+    .grid{display:grid;gap:20px}
+    .hero .grid{grid-template-columns:1.2fr .8fr}
+    h1{font-size:clamp(28px,4vw,44px);margin:0 0 12px}
+    p{color:var(--muted)}
+    .card{background:radial-gradient(120% 120% at 10% 0%,#0b1220, var(--card));border:1px solid #1f2937;border-radius:18px;padding:20px}
+    .features{grid-template-columns:repeat(auto-fit,minmax(220px,1fr))}
+    .badge{display:inline-block;border:1px solid #1f2937;border-radius:999px;padding:6px 10px;color:var(--brand);margin-bottom:10px}
+    footer{border-top:1px solid #111827;color:var(--muted)}
+    @media(max-width:800px){.hero .grid{grid-template-columns:1fr}}
+  </style>
 </head>
 <body>
+  <header>
+    <div class="wrap">
+      <nav>
+        <div class="logo">ia<span>Tech</span></div>
+        <button class="cta" onclick="document.getElementById('contato').scrollIntoView({behavior:'smooth'})">Contato</button>
+      </nav>
+    </div>
+  </header>
 
-<div class="card center">
-  <h2>🔐 Login iaTech</h2>
+  <main>
+    <section class="hero">
+      <div class="wrap">
+        <div class="grid">
+          <div>
+            <span class="badge">Inteligência Artificial</span>
+            <h1>Soluções inteligentes para dados e negócios</h1>
+            <p>Na iaTech criamos produtos com IA, análise de dados e automação para acelerar decisões e gerar impacto real.</p>
+            <button class="cta">Começar agora</button>
+          </div>
+          <div class="card">
+            <h3>O que fazemos</h3>
+            <ul>
+              <li>📊 Análise e visualização de dados</li>
+              <li>🤖 Modelos de IA e Machine Learning</li>
+              <li>⚙️ Automação de processos</li>
+              <li>☁️ Integração com APIs e Cloud</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
 
-  <form id="loginForm">
-    <input id="email" type="email" placeholder="Email" required>
-    <input id="password" type="password" placeholder="Senha" required>
-    <button type="submit">Entrar</button>
-  </form>
+    <section>
+      <div class="wrap">
+        <div class="grid features">
+          <div class="card"><h4>Performance</h4><p>Arquiteturas modernas e escaláveis.</p></div>
+          <div class="card"><h4>Segurança</h4><p>Boas práticas e proteção de dados.</p></div>
+          <div class="card"><h4>Resultados</h4><p>Foco em métricas e valor ao negócio.</p></div>
+        </div>
+      </div>
+    </section>
 
-  <p id="msg"></p>
-</div>
+    <section>
+      <div class="wrap">
+        <div class="grid" style="grid-template-columns:1fr 1fr">
+          <div class="card">
+            <h3>📊 Gráficos de Dados</h3>
+            <canvas id="graficoIA" height="200"></canvas>
+          </div>
+          <div class="card">
+            <h3>🔐 Área de Login</h3>
+            <form onsubmit="login(event)">
+              <input id="user" placeholder="Usuário" required style="width:100%;padding:10px;margin:8px 0;border-radius:10px;border:1px solid #1f2937;background:#020617;color:#e5e7eb" />
+              <input id="pass" type="password" placeholder="Senha" required style="width:100%;padding:10px;margin:8px 0;border-radius:10px;border:1px solid #1f2937;background:#020617;color:#e5e7eb" />
+              <button class="cta" type="submit">Entrar</button>
+              <p id="loginMsg" style="margin-top:10px"></p>
+            </form>
+          </div>
+        </div>
+      </div>
+    </section>
 
-<script src="https://unpkg.com/@supabase/supabase-js@2"></script>
-<script src="auth.js"></script>
+    <section id="contato">
+      <div class="wrap">
+        <div class="card">
+          <h3>Fale com a iaTech</h3>
+          <form onsubmit="event.preventDefault(); alert('Mensagem enviada!');">
+            <input placeholder="Nome" required style="width:100%;padding:10px;margin:8px 0;border-radius:10px;border:1px solid #1f2937;background:#020617;color:#e5e7eb" />
+            <input placeholder="Email" type="email" required style="width:100%;padding:10px;margin:8px 0;border-radius:10px;border:1px solid #1f2937;background:#020617;color:#e5e7eb" />
+            <textarea placeholder="Mensagem" rows="4" style="width:100%;padding:10px;margin:8px 0;border-radius:10px;border:1px solid #1f2937;background:#020617;color:#e5e7eb"></textarea>
+            <button class="cta" type="submit">Enviar</button>
+          </form>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="wrap">© 2025 iaTech. Todos os direitos reservados.</div>
+  </footer>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <script>
+    const ctx = document.getElementById('graficoIA');
+    new Chart(ctx, {
+      type: 'line',
+      data: {
+        labels: ['Jan','Fev','Mar','Abr','Mai','Jun'],
+        datasets: [{
+          label: 'Uso de IA (%)',
+          data: [20, 35, 50, 65, 80, 95],
+          borderWidth: 2
+        }]
+      },
+      options: {
+        responsive: true,
+        scales: { y: { beginAtZero: true } }
+      }
+    });
+
+    function login(e){
+      e.preventDefault();
+      const u = document.getElementById('user').value;
+      const p = document.getElementById('pass').value;
+      const msg = document.getElementById('loginMsg');
+      if(u === 'admin' && p === '1234'){
+        msg.style.color = '#22d3ee';
+        msg.innerText = 'Login realizado com sucesso!';
+      } else {
+        msg.style.color = 'tomato';
+        msg.innerText = 'Usuário ou senha inválidos';
+      }
+    }
+  </script>
 </body>
 </html>
