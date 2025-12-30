@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <title>iaTech | Dashboard</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header>
+  <h2>📊 Dashboard iaTech</h2>
+  <button onclick="logout()">Sair</button>
+</header>
+
+<section class="grid">
+  <div class="card">👥 Usuários<br><strong id="users">0</strong></div>
+  <div class="card">🤖 Modelos<br><strong id="models">0</strong></div>
+  <div class="card">🎯 Precisão Média<br><strong id="avg">0%</strong></div>
+</section>
+
+<section class="grid">
+  <div class="card">
+    <canvas id="chartAccuracy"></canvas>
+  </div>
+  <div class="card">
+    <canvas id="chartDistrib"></canvas>
+  </div>
+</section>
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script src="https://unpkg.com/@supabase/supabase-js@2"></script>
+<script src="auth.js"></script>
+<script src="dashboard.js"></script>
+</body>
+</html>

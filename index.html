@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <title>iaTech | Login</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="card center">
+  <h2>🔐 Login iaTech</h2>
+
+  <form id="loginForm">
+    <input id="email" type="email" placeholder="Email" required>
+    <input id="password" type="password" placeholder="Senha" required>
+    <button type="submit">Entrar</button>
+  </form>
+
+  <p id="msg"></p>
+</div>
+
+<script src="https://unpkg.com/@supabase/supabase-js@2"></script>
+<script src="auth.js"></script>
+</body>
+</html>
