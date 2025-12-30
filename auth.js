@@ -10,8 +10,9 @@ const supabase = supabaseJs.createClient(
 document.getElementById("loginForm")?.addEventListener("submit", async (e) => {
   e.preventDefault()
 
-  const email = email.value
-  const password = password.value
+  const email = document.getElementById("email").value
+  const password = document.getElementById("password").value
+  const msg = document.getElementById("msg")
 
   const { error } = await supabase.auth.signInWithPassword({
     email,
@@ -32,3 +33,13 @@ async function protectPage() {
     window.location.href = "index.html"
   }
 }
+
+// REDIRECIONA SE JÁ ESTIVER LOGADO
+async function redirectIfLogged() {
+  const { data } = await supabase.auth.getSession()
+  if (data.session) {
+    window.location.href = "dashboard.html"
+  }
+}
+
+redirectIfLogged()

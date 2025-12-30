@@ -1,10 +1,11 @@
 protectPage()
 
 async function loadDashboard() {
-
   const { data: metrics } = await supabase
     .from("ml_metrics")
     .select("*")
+
+  if (!metrics || metrics.length === 0) return
 
   document.getElementById("models").innerText = metrics.length
 
@@ -20,13 +21,13 @@ async function loadDashboard() {
     data: {
       labels: metrics.map(m => m.model),
       datasets: [{
-        label: "Acurácia",
+        label: "Acurácia (%)",
         data: metrics.map(m => m.accuracy * 100)
       }]
     }
   })
 
-  // GRÁFICO DISTRIBUIÇÃO
+  // GRÁFICO DE DISTRIBUIÇÃO
   new Chart(chartDistrib, {
     type: "doughnut",
     data: {

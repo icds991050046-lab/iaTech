@@ -41,4 +41,5 @@ input, button {
 button {
   background: #22d3ee;
   font-weight: bold;
+  cursor: pointer;
 }
